@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme {
+    --color-dark: rgb(7, 7, 12); 
+  }

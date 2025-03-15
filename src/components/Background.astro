@@ -1,0 +1,56 @@
+<div>
+  <div class="absolute inset-0 z-0">
+    <div
+      class="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:90px_90px]"
+    >
+    </div>
+  </div>
+
+  <!-- Mouse following gradient -->
+  <div id="mouse-gradient" class="absolute inset-0 opacity-30"></div>
+
+  <!-- Circles -->
+  <div>
+    <div
+      class="absolute left-1/4 top-1/8 h-64 w-64 rounded-full bg-blue-600/20 blur-[100px]"
+    >
+    </div>
+
+    <div
+      class="absolute -top-[25%] -left-[20%] h-[600px] w-[600px] rounded-full bg-purple-600/20 blur-[120px]"
+    >
+    </div>
+    <div
+      class="absolute bottom-[20%] -right-[20%] h-[600px] w-[600px] rounded-full bg-blue-600/20 blur-[120px]"
+    >
+    </div>
+  </div>
+</div>
+
+<script>
+  const mouseGradient = document.getElementById("mouse-gradient");
+  let mouseX = 0.5;
+  let mouseY = 0.5;
+
+  function handleMouseMove(e: MouseEvent) {
+    mouseX = e.clientX / window.innerWidth;
+    mouseY = e.clientY / window.innerHeight;
+    updateGradient();
+  }
+
+  function updateGradient() {
+    if (mouseGradient) {
+      mouseGradient.style.background = `radial-gradient(
+        circle at ${mouseX * 100}% ${mouseY * 100}%, 
+        rgba(125, 90, 255, 0.3), 
+        transparent 40%
+      )`;
+    }
+  }
+
+  // Initialize gradient
+  updateGradient();
+
+  // Set up event listener
+  window.addEventListener("mousemove", handleMouseMove);
+</script>
