@@ -92,7 +92,7 @@ export default function Terminal() {
                   <li>Python & Django</li>
                   <li>Java & Spring Boot</li>
                   <li>GraphQL</li>
-                  <li>Database Design</li>
+                  <li>Microservices</li>
                 </ul>
               </div>
               <div>
@@ -109,7 +109,8 @@ export default function Terminal() {
                 <ul className="list-disc pl-5">
                   <li>Agile Methodologies</li>
                   <li>Performance Optimization</li>
-                  <li>Monitoring & Observability</li>
+                  <li>Observability tools</li>
+                  <li>GIS software</li>
                 </ul>
               </div>
             </div>
@@ -424,14 +425,22 @@ export default function Terminal() {
         className="p-4 h-50 overflow-y-auto"
         onClick={handleTerminalClick}
       >
-        {output.map((item, index) => (
-          <div
-            key={index}
-            className={`mb-2 ${item.type === "input" ? "text-green-400" : ""}`}
-          >
-            {item.content}
-          </div>
-        ))}
+        {output.map((item, index) => {
+          return (
+            <div key={index} className="mb-2">
+              {typeof item.content === "string" && item.type === "input" ? (
+                <>
+                  <span className="text-green-400">{user} ~ %</span>
+                  <span className="text-white">
+                    {item.content.replace(`${user} ~ %`, "")}
+                  </span>
+                </>
+              ) : (
+                <span className="text-white">{item.content}</span>
+              )}
+            </div>
+          );
+        })}
         <form onSubmit={handleSubmit} className="flex items-center group">
           <span className="text-green-400 mr-2">{user} ~ %</span>
           <div className="relative flex-1">
