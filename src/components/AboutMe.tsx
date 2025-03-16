@@ -11,7 +11,6 @@ import {
   Quote,
   Sparkles,
   Terminal,
-  TerminalSquareIcon,
   UsersRound,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -22,7 +21,11 @@ import Card from "./ui/Card";
 export default function AboutMe() {
   const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.2 });
+  const isInView = useInView(containerRef, {
+    once: false,
+    amount: 0.2,
+    initial: false,
+  });
   const [activeQuote, setActiveQuote] = useState(0);
 
   useEffect(() => {
@@ -77,7 +80,7 @@ export default function AboutMe() {
   ];
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden py-24 text-white">
+    <div className="relative w-full py-24 text-white">
       <div className="container relative z-10 mx-auto px-2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -101,7 +104,7 @@ export default function AboutMe() {
           ref={containerRef}
           className="mx-auto grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4"
         >
-          <Card colSpan={2} glowColor="indigo" delay={0.1}>
+          <Card colSpan={2} glowColor="blue" delay={0.1}>
             <h3 className="mb-4 text-xl font-bold ">Currently Interested In</h3>
 
             <div className="flex flex-wrap gap-3">
@@ -208,7 +211,7 @@ export default function AboutMe() {
           >
             <h3 className="mb-2 text-xl font-bold">Global Collaborations</h3>
             <p className="text-sm text-white/70">
-              I've worked with talented people around the world
+              I've collaborated with talented people around the world
             </p>
 
             <div className="relative w-full h-[250px] overflow-hidden">

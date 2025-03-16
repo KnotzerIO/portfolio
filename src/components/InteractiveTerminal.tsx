@@ -1,4 +1,3 @@
-import { X } from "lucide-react";
 import type React from "react";
 import { useEffect, useRef, useState, type JSX } from "react";
 
@@ -208,12 +207,6 @@ export default function Terminal() {
   }, [output]);
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
-
-  useEffect(() => {
     const interval = setInterval(() => {
       setBlinkCursor((prev) => !prev);
     }, 530);
@@ -230,7 +223,6 @@ export default function Terminal() {
     const value = e.target.value;
     setInput(value);
 
-    // Handle autocomplete
     if (value.trim() !== "") {
       const currentWord = value.trim();
       const matchingCommands = commands
@@ -255,7 +247,6 @@ export default function Terminal() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // Handle up arrow for history
     if (e.key === "ArrowUp") {
       e.preventDefault();
       if (autocompleteOptions.length > 0) {
@@ -270,10 +261,7 @@ export default function Terminal() {
         setInput(history[history.length - 1 - newIndex]);
         setSuggestion("");
       }
-    }
-
-    // Handle down arrow for history
-    else if (e.key === "ArrowDown") {
+    } else if (e.key === "ArrowDown") {
       e.preventDefault();
       if (autocompleteOptions.length > 0) {
         setSelectedAutocompleteIndex((prev) => {
@@ -291,19 +279,13 @@ export default function Terminal() {
         setInput("");
         setSuggestion("");
       }
-    }
-
-    // Handle tab for autocomplete
-    else if (e.key === "Tab") {
+    } else if (e.key === "Tab") {
       e.preventDefault();
       if (suggestion) {
         setInput(suggestion);
         setSuggestion("");
       }
-    }
-
-    // Handle escape to close autocomplete
-    else if (e.key === "Escape") {
+    } else if (e.key === "Escape") {
       setSuggestion("");
     }
   };
@@ -314,7 +296,6 @@ export default function Terminal() {
     const commandName = args[0].toLowerCase();
     const command = commands.find((c) => c.name === commandName);
 
-    // Add to output
     setOutput((prev) => [
       ...prev,
       {
@@ -323,13 +304,11 @@ export default function Terminal() {
       },
     ]);
 
-    // Add to history
     if (trimmedCmd) {
       setHistory((prev) => [...prev, trimmedCmd]);
       setHistoryIndex(-1);
     }
 
-    // Execute command
     if (command) {
       const result = command.execute(args.slice(1));
       setOutput((prev) => [...prev, { type: "output", content: result }]);
@@ -362,7 +341,6 @@ export default function Terminal() {
     }
   }, [input]);
 
-  // And add a ref for the cursor
   const cursorRef = useRef<HTMLSpanElement>(null);
 
   return (
@@ -409,7 +387,6 @@ export default function Terminal() {
               onFocus={() => setInputActive(true)}
               onBlur={() => setInputActive(false)}
               className="absolute inset-0 w-full h-full bg-transparent outline-none text-transparent caret-transparent"
-              autoFocus
               spellCheck="false"
               autoComplete="off"
             />
