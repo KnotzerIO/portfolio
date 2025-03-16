@@ -8,6 +8,7 @@ type CommandType = {
 };
 
 export default function Terminal() {
+  const user = "visitor@portfolio";
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -26,6 +27,7 @@ export default function Terminal() {
   const outputRef = useRef<HTMLDivElement>(null);
   const [blinkCursor, setBlinkCursor] = useState(true);
   const [inputActive, setInputActive] = useState(false);
+  const mountTime = useRef(new Date());
 
   const commands: CommandType[] = [
     {
@@ -105,9 +107,9 @@ export default function Terminal() {
               <div>
                 <p className="text-blue-400 font-bold">Other</p>
                 <ul className="list-disc pl-5">
-                  <li>Git & GitHub</li>
                   <li>Agile Methodologies</li>
                   <li>Performance Optimization</li>
+                  <li>Monitoring & Observability</li>
                 </ul>
               </div>
             </div>
@@ -196,6 +198,77 @@ export default function Terminal() {
       description: "Display user information",
       execute: () => {
         return "visitor";
+      },
+    },
+    {
+      name: "neofetch",
+      description: "Display system information",
+      execute: () => {
+        const now = new Date();
+        const uptimeMs = now.getTime() - mountTime.current.getTime();
+        const uptime = {
+          seconds: Math.floor((uptimeMs / 1000) % 60),
+          minutes: Math.floor((uptimeMs / (1000 * 60)) % 60),
+          hours: Math.floor((uptimeMs / (1000 * 60 * 60)) % 24),
+        };
+
+        const uptimeStr = `${uptime.hours
+          .toString()
+          .padStart(2, "0")}:${uptime.minutes
+          .toString()
+          .padStart(2, "0")}:${uptime.seconds.toString().padStart(2, "0")}`;
+
+        return (
+          <div className="flex flex-wrap gap-4">
+            <pre className="text-blue-400 text-xs sm:text-sm">
+              {`
+  ██████╗ ███████╗██╗   ██╗ ██████╗ ███████╗
+  ██╔══██╗██╔════╝██║   ██║██╔═══██╗██╔════╝
+  ██║  ██║█████╗  ██║   ██║██║   ██║███████╗
+  ██║  ██║██╔══╝  ╚██╗ ██╔╝██║   ██║╚════██║
+  ██████╔╝███████╗ ╚████╔╝ ╚██████╔╝███████║
+  ╚═════╝ ╚══════╝  ╚═══╝   ╚═════╝ ╚══════╝
+    `}
+            </pre>
+            <div className="text-white mt-2 flex flex-col">
+              <div className="flex flex-col">
+                <span className="text-blue-400 font-bold mr-2">{user}</span>
+                <span>-----------------</span>
+              </div>
+              <div className="flex">
+                <span className="text-blue-400 font-bold mr-2">OS:</span>
+                <span>DevOs 6.9</span>
+              </div>
+              <div className="flex">
+                <span className="text-blue-400 font-bold mr-2">Host:</span>
+                <span>Portfolio Terminal v1.0.0</span>
+              </div>
+
+              <div className="flex">
+                <span className="text-blue-400 font-bold mr-2">Kernel:</span>
+                <span>React 19</span>
+              </div>
+              <div className="flex">
+                <span className="text-blue-400 font-bold mr-2">Uptime:</span>
+                <span>{uptimeStr}</span>
+              </div>
+              <div className="flex">
+                <span className="text-blue-400 font-bold mr-2">Shell:</span>
+                <span>Portfolio Bash 3.0</span>
+              </div>
+              <div className="mt-2 flex">
+                <span className="block mr-1 w-4 h-4 bg-blue-500"></span>
+                <span className="block mr-1 w-4 h-4 bg-green-500"></span>
+                <span className="block mr-1 w-4 h-4 bg-yellow-500"></span>
+                <span className="block mr-1 w-4 h-4 bg-red-500"></span>
+                <span className="block mr-1 w-4 h-4 bg-purple-500"></span>
+                <span className="block mr-1 w-4 h-4 bg-indigo-500"></span>
+                <span className="block mr-1 w-4 h-4 bg-pink-500"></span>
+                <span className="block mr-1 w-4 h-4 bg-gray-500"></span>
+              </div>
+            </div>
+          </div>
+        );
       },
     },
   ];
@@ -300,7 +373,7 @@ export default function Terminal() {
       ...prev,
       {
         type: "input",
-        content: `visitor@portfolio ~ % ${trimmedCmd}`,
+        content: `${user} ~ % ${trimmedCmd}`,
       },
     ]);
 
@@ -360,7 +433,7 @@ export default function Terminal() {
           </div>
         ))}
         <form onSubmit={handleSubmit} className="flex items-center group">
-          <span className="text-green-400 mr-2">visitor@portfolio ~ %</span>
+          <span className="text-green-400 mr-2">{user} ~ %</span>
           <div className="relative flex-1">
             <div className="flex items-center">
               <span ref={textMeasureRef} className="text-white whitespace-pre">
