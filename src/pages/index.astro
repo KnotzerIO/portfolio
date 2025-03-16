@@ -2,6 +2,7 @@
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 import Background from "../components/Background.astro";
+import AboutMe from "../components/AboutMe";
 ---
 
 <Layout>
@@ -10,5 +11,6 @@ import Background from "../components/Background.astro";
   >
     <Background />
     <Hero />
+    <AboutMe client:load />
   </main>
 </Layout>

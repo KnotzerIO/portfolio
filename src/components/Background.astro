@@ -1,18 +1,18 @@
 <div>
   <div class="absolute inset-0 z-0">
     <div
-      class="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:90px_90px]"
+      class="h-full w-full bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:90px_90px]"
     >
     </div>
   </div>
 
   <!-- Mouse following gradient -->
-  <div id="mouse-gradient" class="absolute inset-0 opacity-30"></div>
+  <div id="mouse-gradient" class="absolute inset-0 opacity-40"></div>
 
   <!-- Circles -->
   <div>
     <div
-      class="absolute left-1/4 top-1/8 h-64 w-64 rounded-full bg-blue-600/20 blur-[100px]"
+      class="absolute left-1/5 bottom-1/3 h-64 w-64 rounded-full bg-blue-600/20 blur-[100px]"
     >
     </div>
 
@@ -48,9 +48,7 @@
     }
   }
 
-  // Initialize gradient
   updateGradient();
 
-  // Set up event listener
   window.addEventListener("mousemove", handleMouseMove);
 </script>
