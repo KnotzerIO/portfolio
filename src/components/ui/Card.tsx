@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { DragControls, motion, type AnimationControls } from "framer-motion";
 import type { ReactNode } from "react";
 
 interface CardProps {
@@ -15,6 +15,7 @@ interface CardProps {
     | "pink"
     | "indigo";
   delay?: number;
+  controls: AnimationControls;
 }
 
 export default function Card({
@@ -24,6 +25,7 @@ export default function Card({
   rowSpan = 1,
   glowColor = "blue",
   delay = 0.2,
+  controls,
 }: CardProps) {
   const glowColors = {
     blue: "bg-blue-600/10 group-hover:bg-blue-600/20",
@@ -59,7 +61,7 @@ export default function Card({
         ${colSpanClasses[colSpan]} ${rowSpanClasses[rowSpan]} ${className}
       `}
       initial="hidden"
-      animate="visible"
+      animate={controls}
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: {

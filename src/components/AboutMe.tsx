@@ -32,7 +32,7 @@ export default function AboutMe() {
     if (isInView) {
       const interval = setInterval(() => {
         setActiveQuote((prev) => (prev + 1) % quotes.length);
-      }, 8000);
+      }, 5000);
       return () => clearInterval(interval);
     }
   }, [isInView]);
@@ -80,7 +80,7 @@ export default function AboutMe() {
   ];
 
   return (
-    <div className="relative w-full py-24 text-white">
+    <div className="relative w-full py-12 text-white">
       <div className="container relative z-10 mx-auto px-2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ export default function AboutMe() {
           ref={containerRef}
           className="mx-auto grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4"
         >
-          <Card colSpan={2} glowColor="indigo" delay={0.1}>
+          <Card colSpan={2} glowColor="indigo" delay={0.1} controls={controls}>
             <h3 className="mb-4 text-xl font-bold ">Currently Interested In</h3>
 
             <div className="flex flex-wrap gap-3">
@@ -141,7 +141,7 @@ export default function AboutMe() {
               </div>
             </div>
           </Card>
-          <Card rowSpan={1} glowColor="purple" delay={0.2}>
+          <Card rowSpan={1} glowColor="purple" delay={0.2} controls={controls}>
             <div className="flex items-center space-x-2">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 backdrop-blur-md">
                 <Navigation className="h-6 w-6 text-purple-400" />
@@ -154,7 +154,13 @@ export default function AboutMe() {
               positioning solutions for complex environments
             </p>
           </Card>
-          <Card colSpan={1} rowSpan={1} glowColor="pink" delay={0.3}>
+          <Card
+            colSpan={1}
+            rowSpan={1}
+            glowColor="pink"
+            delay={0.3}
+            controls={controls}
+          >
             <div className="flex items-center space-x-2">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 backdrop-blur-md">
                 <Quote className="h-6 w-6 text-pink-400" />
@@ -194,7 +200,7 @@ export default function AboutMe() {
               ))}
             </div>
           </Card>
-          <Card colSpan={2} glowColor="green" delay={0.4}>
+          <Card colSpan={2} glowColor="green" delay={0.4} controls={controls}>
             <div className="flex items-center space-x-2 mb-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 backdrop-blur-md">
                 <Terminal className="h-6 w-6 text-green-400" />
@@ -208,6 +214,7 @@ export default function AboutMe() {
             glowColor="blue"
             delay={0.5}
             className="pb-0 hidden lg:block"
+            controls={controls}
           >
             <h3 className="mb-2 text-xl font-bold">Global Collaborations</h3>
             <p className="text-sm text-white/70">

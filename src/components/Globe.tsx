@@ -20,6 +20,7 @@ export default function Globe({ size = 400 }) {
       phi: 0,
       theta: 0,
       dark: 1,
+      opacity: 0.9,
       diffuse: 1.2,
       mapSamples: 16000,
       mapBrightness: 6,
