@@ -330,12 +330,13 @@ export default function Terminal() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     executeCommand(input);
+    setAutocompleteOptions([]);
+    setHistoryIndex(-1);
   };
 
   const textMeasureRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    // Update cursor position whenever input changes
     if (textMeasureRef.current && cursorRef.current) {
       cursorRef.current.style.left = `${textMeasureRef.current.offsetWidth}px`;
     }
@@ -344,7 +345,7 @@ export default function Terminal() {
   const cursorRef = useRef<HTMLSpanElement>(null);
 
   return (
-    <div className="w-full max-w-4xl mx-auto rounded-lg overflow-hidden border border-gray-700 shadow-lg bg-black text-gray-200 font-mono">
+    <div className="w-full max-w-4xl mx-auto rounded-lg overflow-hidden  shadow-lg bg-black text-gray-200 font-mono">
       <div
         ref={outputRef}
         className="p-4 h-50 overflow-y-auto"

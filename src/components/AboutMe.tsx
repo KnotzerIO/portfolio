@@ -104,7 +104,7 @@ export default function AboutMe() {
           ref={containerRef}
           className="mx-auto grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4"
         >
-          <Card colSpan={2} glowColor="blue" delay={0.1}>
+          <Card colSpan={2} glowColor="indigo" delay={0.1}>
             <h3 className="mb-4 text-xl font-bold ">Currently Interested In</h3>
 
             <div className="flex flex-wrap gap-3">
@@ -194,7 +194,7 @@ export default function AboutMe() {
               ))}
             </div>
           </Card>
-          <Card colSpan={2} glowColor="green" delay={0.2}>
+          <Card colSpan={2} glowColor="green" delay={0.4}>
             <div className="flex items-center space-x-2 mb-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 backdrop-blur-md">
                 <Terminal className="h-6 w-6 text-green-400" />
@@ -206,7 +206,7 @@ export default function AboutMe() {
           <Card
             colSpan={2}
             glowColor="blue"
-            delay={0}
+            delay={0.5}
             className="pb-0 hidden lg:block"
           >
             <h3 className="mb-2 text-xl font-bold">Global Collaborations</h3>
