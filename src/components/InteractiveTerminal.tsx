@@ -22,10 +22,8 @@ export default function Terminal() {
   ]);
   const [suggestion, setSuggestion] = useState("");
   const [autocompleteOptions, setAutocompleteOptions] = useState<string[]>([]);
-  const [selectedAutocompleteIndex, setSelectedAutocompleteIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
-  const [blinkCursor, setBlinkCursor] = useState(true);
   const [inputActive, setInputActive] = useState(false);
   const mountTime = useRef(new Date());
 
@@ -280,13 +278,6 @@ export default function Terminal() {
     }
   }, [output]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBlinkCursor((prev) => !prev);
-    }, 530);
-    return () => clearInterval(interval);
-  }, []);
-
   const handleTerminalClick = () => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -312,8 +303,6 @@ export default function Terminal() {
       } else {
         setSuggestion("");
       }
-
-      setSelectedAutocompleteIndex(0);
     } else {
       setSuggestion("");
       setAutocompleteOptions([]);
@@ -323,13 +312,7 @@ export default function Terminal() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "ArrowUp") {
       e.preventDefault();
-      if (autocompleteOptions.length > 0) {
-        setSelectedAutocompleteIndex((prev) => {
-          const newIndex = prev > 0 ? prev - 1 : autocompleteOptions.length - 1;
-          setSuggestion(autocompleteOptions[newIndex]);
-          return newIndex;
-        });
-      } else if (historyIndex < history.length - 1) {
+      if (historyIndex < history.length - 1) {
         const newIndex = historyIndex + 1;
         setHistoryIndex(newIndex);
         setInput(history[history.length - 1 - newIndex]);
@@ -337,13 +320,7 @@ export default function Terminal() {
       }
     } else if (e.key === "ArrowDown") {
       e.preventDefault();
-      if (autocompleteOptions.length > 0) {
-        setSelectedAutocompleteIndex((prev) => {
-          const newIndex = prev < autocompleteOptions.length - 1 ? prev + 1 : 0;
-          setSuggestion(autocompleteOptions[newIndex]);
-          return newIndex;
-        });
-      } else if (historyIndex > 0) {
+      if (historyIndex > 0) {
         const newIndex = historyIndex - 1;
         setHistoryIndex(newIndex);
         setInput(history[history.length - 1 - newIndex]);
@@ -419,7 +396,7 @@ export default function Terminal() {
   const cursorRef = useRef<HTMLSpanElement>(null);
 
   return (
-    <div className="w-full max-w-4xl mx-auto rounded-lg overflow-hidden  shadow-lg bg-black text-gray-200 font-mono">
+    <div className="w-full max-w-4xl mx-auto rounded-lg overflow-hidden  shadow-lg bg-black text-gray-200 font-mono border border-white/10">
       <div
         ref={outputRef}
         className="p-4 h-50 overflow-y-auto"
@@ -455,9 +432,9 @@ export default function Terminal() {
               )}
               <span
                 ref={cursorRef}
-                className={`absolute h-[1.2em] w-[0.6em] bg-white/70 ${
-                  blinkCursor && inputActive ? "opacity-100" : "opacity-0"
-                } transition-opacity duration-100`}
+                className={`absolute h-[1.2em] w-[0.6em] bg-white/70 
+    ${inputActive ? "terminal-cursor-blink" : "opacity-0"}
+    transition-opacity duration-100`}
               ></span>
             </div>
 
