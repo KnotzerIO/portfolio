@@ -1,8 +1,9 @@
 ---
+import AboutMe from "../components/AboutMe";
+import Background from "../components/Background.astro";
+import Dock from "../components/Dock";
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
-import Background from "../components/Background.astro";
-import AboutMe from "../components/AboutMe";
 ---
 
 <Layout>
@@ -11,6 +12,7 @@ import AboutMe from "../components/AboutMe";
   >
     <Background />
     <Hero />
-    <AboutMe client:visible />
+    <AboutMe client:load />
+    <Dock />
   </main>
 </Layout>

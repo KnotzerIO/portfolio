@@ -31,24 +31,39 @@
   const mouseGradient = document.getElementById("mouse-gradient");
   let mouseX = 0.5;
   let mouseY = 0.5;
+  let ticking = false;
+  let lastUpdateTime = 0;
 
-  function handleMouseMove(e: MouseEvent) {
+  function handleMouseMove(e) {
     mouseX = e.clientX / window.innerWidth;
     mouseY = e.clientY / window.innerHeight;
-    updateGradient();
+
+    // Throttle updates to improve performance
+    const now = Date.now();
+    if (!ticking && now - lastUpdateTime > 20) {
+      // Limit to ~50fps
+      requestAnimationFrame(() => {
+        updateGradient();
+        ticking = false;
+        lastUpdateTime = now;
+      });
+      ticking = true;
+    }
   }
 
   function updateGradient() {
     if (mouseGradient) {
       mouseGradient.style.background = `radial-gradient(
         circle at ${mouseX * 100}% ${mouseY * 100}%, 
-        rgba(125, 90, 255, 0.3), 
+        rgba(125, 90, 255, 0.2), 
         transparent 40%
       )`;
+
+      mouseGradient.style.transform = "translateZ(0)";
     }
   }
 
   updateGradient();
 
-  window.addEventListener("mousemove", handleMouseMove);
+  window.addEventListener("mousemove", handleMouseMove, { passive: true });
 </script>

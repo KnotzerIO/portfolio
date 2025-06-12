@@ -9,16 +9,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.2.1",
+    "@astrojs/react": "^4.3.0",
     "@tailwindcss/vite": "^4.0.13",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "astro": "^5.4.3",
+    "astro": "^5.9.2",
+    "clsx": "^2.1.1",
     "cobe": "^0.6.3",
     "framer-motion": "^12.5.0",
     "lucide-react": "^0.482.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.13"
   }
 }
