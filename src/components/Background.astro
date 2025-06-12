@@ -34,7 +34,7 @@
   let ticking = false;
   let lastUpdateTime = 0;
 
-  function handleMouseMove(e) {
+  function handleMouseMove(e: { clientX: number; clientY: number; }) {
     mouseX = e.clientX / window.innerWidth;
     mouseY = e.clientY / window.innerHeight;
 
