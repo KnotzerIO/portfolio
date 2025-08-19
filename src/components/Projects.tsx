@@ -1,7 +1,6 @@
 import { motion, useAnimation, useInView } from "framer-motion";
 import { Github, Globe, Navigation, Users } from "lucide-react";
 import { useEffect, useRef } from "react";
-import indoorWayfinderImg from "../assets/projects/indoor-wayfinder.png";
 export default function Projects() {
   const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
