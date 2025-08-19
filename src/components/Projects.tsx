@@ -26,7 +26,7 @@ export default function Projects() {
       icon: Navigation,
       color: "indigo",
       techStack: ["React", "TypeScript"],
-      image: indoorWayfinderImg,
+      image: "/projects/indoor-wayfinder.png",
     },
     {
       title: "OpenIndoorMaps",
@@ -108,21 +108,11 @@ export default function Projects() {
                         className={`absolute inset-0 bg-gradient-to-br from-${project.color}-600/30 to-${project.color}-800/30`}
                       />
 
-                      {/* Project Image Preview */}
-                      {typeof project.image === "string" ? (
-                        <img
-                          src={project.image}
-                          alt={`${project.title} preview`}
-                          className="absolute inset-0 h-full w-full object-cover rounded-2xl"
+                      <div className="absolute inset-0 flex items-center justify-center z-5">
+                        <Icon
+                          className={`h-24 w-24 text-${project.color}-400/40`}
                         />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center z-5">
-                          <Icon
-                            className={`h-24 w-24 text-${project.color}-400/40`}
-                          />
-                        </div>
-                      )}
-
+                      </div>
                       {/* Project info overlay */}
                       <div className="absolute bottom-0 left-0 right-0 z-20 p-6">
                         <div className="mb-3">
