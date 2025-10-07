@@ -1,6 +1,6 @@
 "use client";
 import { motion, useAnimation, useInView } from "framer-motion";
-import { Github, Globe, Navigation, Users } from "lucide-react";
+import { Github, Globe, HeartHandshake, Navigation, Users } from "lucide-react";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 
@@ -30,6 +30,16 @@ export default function Projects() {
             color: "indigo",
             techStack: ["React", "TypeScript"],
             image: "/images/indoor-wayfinder.png",
+        },
+        {
+            title: "Sign Language Recognition",
+            description: "During an internship, I developed a prototype for an interactive learning platform for sign language. While the code is not publicly available, a demonstration of the model, which recognizes the finger alphabet, is accessible online. (2024)",
+            liveUrl: "https://www.youtube.com/watch?v=ZxW2Kk1bYI8",
+            githubUrl: null,
+            icon: HeartHandshake,
+            color: "fuchsia",
+            techStack: ["Next.js", "TensorFlow.js", "Mediapipe"],
+            image: "/images/fingerspelling.png",
         },
         {
             title: "OpenIndoorMaps",
