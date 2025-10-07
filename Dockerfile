@@ -1,4 +1,5 @@
-# Use Node.js LTS version as base image
+# syntax=docker.io/docker/dockerfile:1
+
 FROM node:20-alpine AS base
 
 # Install dependencies only when needed
@@ -53,7 +54,8 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
 
-# Start the Next.js application
+# server.js is created by next build from the standalone output
+# https://nextjs.org/docs/pages/api-reference/config/next-config-js/output
+ENV HOSTNAME="0.0.0.0"
 CMD ["node", "server.js"]
