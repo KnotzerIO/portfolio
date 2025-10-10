@@ -196,6 +196,8 @@ export default function AboutMe() {
                                     className={`h-1.5 w-8 rounded-full transition-all ${index === activeQuote ? "bg-pink-400" : "bg-white/20"
                                         }`}
                                     onClick={() => setActiveQuote(index)}
+                                    aria-label={`Show quote ${index + 1}`}
+                                    aria-current={index === activeQuote ? "true" : "false"}
                                 />
                             ))}
                         </div>

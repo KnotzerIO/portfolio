@@ -397,12 +397,13 @@ export default function Terminal() {
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="p-1 rounded hover:bg-gray-700 transition-colors text-gray-400 hover:text-white"
+                    aria-label={isExpanded ? "Minimize terminal" : "Expand terminal"}
                     title={isExpanded ? "Minimize terminal" : "Expand terminal"}
                 >
                     {isExpanded ? (
-                        <Minimize2 className="w-4 h-4" />
+                        <Minimize2 className="w-4 h-4" aria-hidden="true" />
                     ) : (
-                        <Maximize2 className="w-4 h-4" />
+                        <Maximize2 className="w-4 h-4" aria-hidden="true" />
                     )}
                 </button>
             </div>
@@ -430,7 +431,9 @@ export default function Terminal() {
                     );
                 })}
                 <form onSubmit={handleSubmit} className="flex items-center group">
-                    <span className="text-green-400 mr-2">{user} ~ %</span>
+                    <label htmlFor="terminal-input" className="text-green-400 mr-2">
+                        {user} ~ %
+                    </label>
                     <div className="relative flex-1">
                         <div className="flex items-center">
                             <span ref={textMeasureRef} className="text-white whitespace-pre">
@@ -450,6 +453,7 @@ export default function Terminal() {
                         </div>
 
                         <input
+                            id="terminal-input"
                             ref={inputRef}
                             type="text"
                             value={input}
@@ -460,7 +464,12 @@ export default function Terminal() {
                             className="absolute inset-0 w-full h-full bg-transparent outline-none text-transparent caret-transparent"
                             spellCheck="false"
                             autoComplete="off"
+                            aria-label="Terminal command input"
+                            aria-describedby="terminal-help"
                         />
+                        <span id="terminal-help" className="sr-only">
+                            Type terminal commands here. Press Tab for autocomplete, arrow keys for history, or type help for available commands.
+                        </span>
                     </div>
                 </form>
             </div>
