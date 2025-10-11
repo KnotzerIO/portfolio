@@ -42,7 +42,7 @@ export default function Projects() {
         {
             title: "Sign Language Recognition",
             description: "During an internship, I developed a prototype for an interactive learning platform for sign language. While the code is not publicly available, a demonstration of the model, which recognizes the finger alphabet, is accessible online. (2024)",
-            liveUrl: "https://www.youtube.com/watch?v=ZxW2Kk1bYI8",
+            liveUrl: "https://fingeralphabet.vercel.app",
             githubUrl: null,
             icon: HeartHandshake,
             color: "fuchsia",
