@@ -62,12 +62,12 @@ export default function AnimatedBackground() {
             />
 
             {/* Animated circles */}
-            <div>
+            <div className="overflow-hidden absolute inset-0">
                 <div className="absolute left-1/5 bottom-1/3 h-64 w-64 rounded-full bg-blue-600/20 blur-[100px]" />
 
-                <div className="absolute -top-[25%] -left-[20%] h-[600px] w-[600px] rounded-full bg-purple-600/20 blur-[120px]" />
+                <div className="absolute top-0 left-0 h-[400px] w-[400px] md:h-[600px] md:w-[600px] md:-top-[25%] md:-left-[20%] rounded-full bg-purple-600/20 blur-[120px]" />
 
-                <div className="absolute bottom-[20%] -right-[20%] h-[600px] w-[600px] rounded-full bg-blue-600/20 blur-[120px]" />
+                <div className="absolute bottom-0 right-0 h-[400px] w-[400px] md:h-[600px] md:w-[600px] md:bottom-[20%] md:-right-[20%] rounded-full bg-blue-600/20 blur-[120px]" />
             </div>
         </div>
     );
