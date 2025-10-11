@@ -202,7 +202,12 @@ export default function AboutMe() {
                             ))}
                         </div>
                     </Card>
-                    <Card colSpan={2} glowColor="green" delay={0.4} controls={controls}>
+                    <Card
+                        colSpan={2}
+                        glowColor="green"
+                        delay={0.4}
+                        className="hidden md:block"
+                        controls={controls}>
                         <div className="flex items-center space-x-2 mb-4">
                             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/5 backdrop-blur-md">
                                 <Terminal className="h-6 w-6 text-green-400" />
