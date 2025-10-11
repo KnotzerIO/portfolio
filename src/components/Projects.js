@@ -1,7 +1,7 @@
 "use client";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { Github, Globe, HeartHandshake, Navigation, Users } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 export default function Projects() {
@@ -12,12 +12,20 @@ export default function Projects() {
         amount: 0.2,
         initial: false,
     });
+    const [flippedCards, setFlippedCards] = useState({});
 
     useEffect(() => {
         if (isInView) {
             controls.start("visible");
         }
     }, [isInView, controls]);
+
+    const handleCardClick = (index) => {
+        setFlippedCards(prev => ({
+            ...prev,
+            [index]: !prev[index]
+        }));
+    };
 
     const projects = [
         {
@@ -67,7 +75,7 @@ export default function Projects() {
 
     return (
         <div className="relative w-full py-12 text-white">
-            <div className="container relative z-10 mx-auto px-2">
+            <div className="container relative z-10 mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -92,7 +100,7 @@ export default function Projects() {
 
                 <div
                     ref={containerRef}
-                    className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-1 lg:grid-cols-2"
+                    className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 md:gap-8 md:px-2 md:grid-cols-1 lg:grid-cols-2"
                 >
                     {projects.map((project, index) => {
                         const Icon = project.icon;
@@ -110,8 +118,9 @@ export default function Projects() {
                                         transition: { duration: 0.6, delay: index * 0.1 },
                                     },
                                 }}
+                                onClick={() => handleCardClick(index)}
                             >
-                                <div className="relative h-full w-full transform-style-preserve-3d transition-transform duration-700 group-hover:rotate-y-180">
+                                <div className={`relative h-full w-full transform-style-preserve-3d transition-transform duration-700 ${flippedCards[index] ? 'rotate-y-180' : ''} md:group-hover:rotate-y-180`}>
                                     {/* Front of card */}
                                     <div className="absolute inset-0 h-full w-full backface-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md overflow-hidden">
                                         <div className="relative h-full flex flex-col p-4 sm:p-6">
@@ -163,7 +172,8 @@ export default function Projects() {
                                                 <div className="mt-auto flex items-center space-x-2 text-white/60">
                                                     <div className="h-1 w-8 bg-white/30 rounded-full"></div>
                                                     <span className="text-xs font-medium uppercase tracking-wider">
-                                                        Hover to explore
+                                                        <span className="md:hidden">Tap to explore</span>
+                                                        <span className="hidden md:inline">Hover to explore</span>
                                                     </span>
                                                     <div className="h-1 w-8 bg-white/30 rounded-full"></div>
                                                 </div>
