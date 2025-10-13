@@ -3,6 +3,7 @@ import AnimatedBackground from "../components/AnimatedBackground";
 import Hero from "../components/Hero";
 import AboutMe from "../components/AboutMe";
 import Projects from "@/components/Projects";
+import WorkExperience from "@/components/WorkExperience";
 export default function Home() {
   return (
     <div className="font-sans relative bg-black">
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <AboutMe />
       <Projects />
+      <WorkExperience />
     </div>
   );
 }
