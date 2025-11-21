@@ -3,8 +3,8 @@
 A stunning, interactive portfolio website built with Next.js 15. Designed to showcase professional skills and experience with modern web technologies.
 
 ![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
-![Next.js](https://img.shields.io/badge/Next.js-14-black)
-![React](https://img.shields.io/badge/React-18-blue)
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![React](https://img.shields.io/badge/React-19-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-38B2AC)
 ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-Latest-FF69B4)
 
