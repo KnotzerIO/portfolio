@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
+const SITE_URL = "https://www.knotzer.io";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -40,25 +42,34 @@ export const metadata = {
     "Machine Learning",
     "Artificial Intelligence"
   ],
-  authors: [{ name: "Mark Knotzer", url: "https://knotzer.io" }],
+  authors: [{ name: "Mark Knotzer", url: SITE_URL }],
   creator: "Mark Knotzer",
   publisher: "Mark Knotzer",
-  metadataBase: new URL("https://knotzer.io"),
+  metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://knotzer.io",
+    url: SITE_URL,
     siteName: "Mark Knotzer - Software Engineer",
     title: "Mark Knotzer - Software Engineer | AI, Cloud & DevOps",
     description: "Software Engineer based in Austria specializing in full-stack web development, AI integration, cloud infrastructure (Azure), and DevOps automation.",
+    images: [
+      {
+        url: `${SITE_URL}/images/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Mark Knotzer - Software Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mark Knotzer - Software Engineer | AI, Cloud & DevOps",
     description: "Software Engineer based in Austria specializing in full-stack development, AI, cloud infrastructure, and DevOps automation.",
+    images: [`${SITE_URL}/images/og-image.png`],
   },
   robots: {
     index: true,

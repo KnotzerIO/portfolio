@@ -101,7 +101,7 @@ export default function TechSkills() {
     ];
 
     return (
-        <div className="relative w-full py-8 md:py-12 text-white">
+        <section aria-label="Technical Skills" className="relative w-full py-8 md:py-12 text-white">
             <div className="container relative z-10 mx-auto px-4 md:px-2">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -330,6 +330,6 @@ export default function TechSkills() {
                     </motion.div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

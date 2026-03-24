@@ -74,7 +74,7 @@ export default function Projects() {
     ];
 
     return (
-        <div className="relative w-full py-12 text-white">
+        <section aria-label="Featured Projects" className="relative w-full py-12 text-white">
             <div className="container relative z-10 mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -248,6 +248,6 @@ export default function Projects() {
                     })}
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

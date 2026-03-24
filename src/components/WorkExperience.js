@@ -73,7 +73,7 @@ export default function WorkExperience() {
   ];
 
   return (
-    <div className="relative w-full py-8 md:py-12 text-white">
+    <section aria-label="Work Experience" className="relative w-full py-8 md:py-12 text-white">
       <div className="container relative z-10 mx-auto px-4 ">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -217,6 +217,6 @@ export default function WorkExperience() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

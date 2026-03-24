@@ -81,7 +81,7 @@ export default function AboutMe() {
     ];
 
     return (
-        <div className="relative w-full py-12 text-white">
+        <section aria-label="About Me" className="relative w-full py-12 text-white">
             <div className="container relative z-10 mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -238,6 +238,6 @@ export default function AboutMe() {
                     </Card>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

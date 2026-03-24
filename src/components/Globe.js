@@ -13,7 +13,8 @@ export default function Globe({ size = 400 }) {
         let phi = 0;
         if (!canvasRef.current) return;
 
-        const globe = createGlobe(canvasRef.current, {
+        const canvas = canvasRef.current;
+        const globe = createGlobe(canvas, {
             devicePixelRatio: 2,
             width: size * 2,
             height: size * 2,
@@ -46,15 +47,14 @@ export default function Globe({ size = 400 }) {
                 state.theta = thetaRef.current;
             },
         });
-
         const onPointerDown = (e) => {
             pointerInteracting.current = Date.now();
-            canvasRef.current.style.cursor = "grabbing";
+            canvas.style.cursor = "grabbing";
         };
 
         const onPointerUp = () => {
             pointerInteracting.current = null;
-            canvasRef.current.style.cursor = "grab";
+            canvas.style.cursor = "grab";
         };
 
         const onPointerMove = (e) => {
@@ -67,29 +67,28 @@ export default function Globe({ size = 400 }) {
                 pointerInteractionMovement.current = deltaX;
             }
         };
-
-        canvasRef.current.addEventListener("mousedown", onPointerDown);
+        canvas.addEventListener("mousedown", onPointerDown);
         document.addEventListener("mouseup", onPointerUp);
         document.addEventListener("mousemove", onPointerMove);
 
-        canvasRef.current.addEventListener("touchstart", onPointerDown);
+        canvas.addEventListener("touchstart", onPointerDown);
         document.addEventListener("touchend", onPointerUp);
         document.addEventListener("touchmove", onPointerMove);
 
         return () => {
             globe.destroy();
-            canvasRef.current?.removeEventListener("mousedown", onPointerDown);
+            canvas.removeEventListener("mousedown", onPointerDown);
             document.removeEventListener("mouseup", onPointerUp);
             document.removeEventListener("mousemove", onPointerMove);
 
-            canvasRef.current.removeEventListener(
+            canvas.removeEventListener(
                 "touchstart",
                 onPointerDown
             );
             document.removeEventListener("touchend", onPointerUp);
             document.removeEventListener("touchmove", onPointerMove);
         };
-    }, []);
+    }, [size]);
 
     return (
         <canvas

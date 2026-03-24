@@ -1,6 +1,6 @@
 export default function Hero() {
     return (
-        <div className="relative min-h-screen w-full overflow-hidden text-white">
+        <header className="relative min-h-screen w-full overflow-hidden text-white">
             <div>
                 {/* Background decorative elements */}
                 <div className="absolute top-[12.5%] left-1/4 h-40 w-40 rounded-full border border-white/10 backdrop-blur-sm" />
@@ -29,6 +29,6 @@ export default function Hero() {
                     Building elegant solutions through clean, efficient code
                 </p>
             </div>
-        </div>
+        </header>
     );
 }
