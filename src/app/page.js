@@ -30,7 +30,10 @@ const jsonLd = {
         "Docker",
         "Kubernetes",
       ],
-      sameAs: ["https://github.com/KnotzerIO"],
+      sameAs: [
+        "https://github.com/KnotzerIO",
+        "https://www.linkedin.com/in/knotzer",
+      ],
     },
   ],
 };
