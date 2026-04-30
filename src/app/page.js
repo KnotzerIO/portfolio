@@ -1,4 +1,8 @@
-import AnimatedBackground from "../components/AnimatedBackground";
+import lazyLoad from "next/dynamic";
+
+export const dynamic = 'force-static';
+
+const AnimatedBackground = lazyLoad(() => import("../components/AnimatedBackground"), { ssr: false });
 import Hero from "../components/Hero";
 import AboutMe from "../components/AboutMe";
 import Projects from "@/components/Projects";

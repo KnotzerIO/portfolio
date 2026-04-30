@@ -15,8 +15,10 @@ import {
     UsersRound,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import Globe from "./Globe";
-import InteractiveTerminal from "./InteractiveTerminal";
+import dynamic from "next/dynamic";
+
+const Globe = dynamic(() => import("./Globe"), { ssr: false });
+const InteractiveTerminal = dynamic(() => import("./InteractiveTerminal"), { ssr: false });
 import Card from "./Card";
 
 export default function AboutMe() {
