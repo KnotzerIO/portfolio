@@ -10,18 +10,18 @@
     "export": "next export"
   },
   "dependencies": {
-    "cobe": "^0.6.5",
-    "framer-motion": "^12.23.22",
-    "lucide-react": "^0.544.0",
-    "next": "15.5.4",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "cobe": "^2.0.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.14.0",
+    "next": "16.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.4",
+    "eslint": "^10",
+    "eslint-config-next": "16.2.4",
     "tailwindcss": "^4"
   },
   "engines": {
