@@ -255,6 +255,7 @@ export default function Projects() {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`${project.title} on GitHub`}
                             className="flex items-center justify-center rounded-lg bg-white/20 border border-white/30 size-11 text-white/80 hover:bg-white/30 hover:text-white transition-all duration-200"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
