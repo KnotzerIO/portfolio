@@ -83,7 +83,7 @@ export default function AboutMe() {
     ];
 
     return (
-        <section aria-label="About Me" className="relative w-full py-12 text-white">
+        <section id="about" aria-label="About Me" className="relative w-full py-12 text-white">
             <div className="container relative z-10 mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -91,13 +91,6 @@ export default function AboutMe() {
                     transition={{ duration: 0.8 }}
                     className="mb-16 text-center"
                 >
-                    <div className="mb-3 flex items-center justify-center space-x-2">
-                        <div className="h-px w-8 bg-white/20"></div>
-                        <span className="text-xs font-medium uppercase tracking-widest text-white/50">
-                            Get to know me
-                        </span>
-                        <div className="h-px w-8 bg-white/20"></div>
-                    </div>
                     <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
                         About Me
                     </h2>

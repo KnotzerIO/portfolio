@@ -5,6 +5,35 @@ body {
   background-color: #000;
 }
 
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+::selection {
+  background-color: rgb(168 85 247 / 0.45);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Terminal Cursor Blink Animation */
 @keyframes terminal-cursor-blink {
   0%,

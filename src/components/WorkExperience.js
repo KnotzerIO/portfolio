@@ -73,7 +73,7 @@ export default function WorkExperience() {
   ];
 
   return (
-    <section aria-label="Work Experience" className="relative w-full py-8 md:py-12 text-white">
+    <section id="experience" aria-label="Work Experience" className="relative w-full py-8 md:py-12 text-white">
       <div className="container relative z-10 mx-auto px-4 ">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -81,13 +81,6 @@ export default function WorkExperience() {
           transition={{ duration: 0.8 }}
           className="mb-16 text-center"
         >
-          <div className="mb-3 flex items-center justify-center space-x-2">
-            <div className="h-px w-8 bg-white/20"></div>
-            <span className="text-xs font-medium uppercase tracking-widest text-white/50">
-              Career Journey
-            </span>
-            <div className="h-px w-8 bg-white/20"></div>
-          </div>
           <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
             Work Experience
           </h2>
@@ -171,7 +164,7 @@ export default function WorkExperience() {
                         {experience.status === "current" && (
                           <div className="absolute -top-3 -right-3">
                             <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-600/20 to-blue-700/20 border border-blue-400/40 backdrop-blur-md rounded-full px-3 py-1.5 shadow-lg">
-                              <div className="h-2.5 w-2.5 rounded-full bg-blue-400 animate-pulse shadow-blue-400/50 shadow-sm"></div>
+                              <div className="h-2 w-2 rounded-full bg-blue-400"></div>
                               <span className="text-xs font-medium text-blue-400">
                                 Current
                               </span>

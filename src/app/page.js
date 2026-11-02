@@ -6,6 +6,7 @@ import AboutMe from "../components/AboutMe";
 import Projects from "@/components/Projects";
 import WorkExperience from "@/components/WorkExperience";
 import TechSkills from "@/components/Techskills";
+import Footer from "@/components/Footer";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -19,7 +20,19 @@ const jsonLd = {
       "@type": "Person",
       name: "Mark Knotzer",
       url: "https://www.knotzer.io",
+      image: "https://www.knotzer.io/images/og-image.png",
       jobTitle: "Software Engineer",
+      description:
+        "Software Engineer based in Austria specializing in full-stack web development, AI integration, cloud infrastructure and DevOps.",
+      worksFor: {
+        "@type": "Organization",
+        name: "durchblicker.at",
+        url: "https://durchblicker.at",
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "AT",
+      },
       knowsAbout: [
         "Full-Stack Web Development",
         "AI Integration",
@@ -53,6 +66,7 @@ export default function Home() {
       <Projects />
       <WorkExperience />
       <TechSkills />
+      <Footer />
     </main>
   );
 }

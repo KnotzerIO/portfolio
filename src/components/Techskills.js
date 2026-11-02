@@ -11,6 +11,25 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+// Full class strings so Tailwind can find them at build time.
+const colorStyles = {
+    blue: {
+        tab: "bg-blue-600/20 text-blue-400 border border-blue-400/30",
+        text: "text-blue-400",
+        bar: "bg-gradient-to-r from-blue-500 to-blue-400",
+    },
+    green: {
+        tab: "bg-green-600/20 text-green-400 border border-green-400/30",
+        text: "text-green-400",
+        bar: "bg-gradient-to-r from-green-500 to-green-400",
+    },
+    purple: {
+        tab: "bg-purple-600/20 text-purple-400 border border-purple-400/30",
+        text: "text-purple-400",
+        bar: "bg-gradient-to-r from-purple-500 to-purple-400",
+    },
+};
+
 export default function TechSkills() {
     const controls = useAnimation();
     const containerRef = useRef(null);
@@ -67,7 +86,7 @@ export default function TechSkills() {
                 { name: "Docker", level: 80, icon: "🐳" },
                 { name: "CI/CD Pipelines", level: 75, icon: "🔄" },
                 { name: "Azure Functions", level: 80, icon: "⚡" },
-                { name: "Infrastructure as Code", level: 70, iconc: "🏗️" },
+                { name: "Infrastructure as Code", level: 70, icon: "🏗️" },
                 { name: "Container Orchestration", level: 70, icon: "🎛️" },
                 { name: "Kubernetes", level: 65, icon: "🛠️" },
                 { name: "Kong API Management", level: 60, icon: "🗺️" },
@@ -101,7 +120,7 @@ export default function TechSkills() {
     ];
 
     return (
-        <section aria-label="Technical Skills" className="relative w-full py-8 md:py-12 text-white">
+        <section id="skills" aria-label="Technical Skills" className="relative w-full py-8 md:py-12 text-white">
             <div className="container relative z-10 mx-auto px-4 md:px-2">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -109,13 +128,6 @@ export default function TechSkills() {
                     transition={{ duration: 0.8 }}
                     className="mb-16 text-center"
                 >
-                    <div className="mb-3 flex items-center justify-center space-x-2">
-                        <div className="h-px w-8 bg-white/20"></div>
-                        <span className="text-xs font-medium uppercase tracking-widest text-white/50">
-                            Technical Expertise
-                        </span>
-                        <div className="h-px w-8 bg-white/20"></div>
-                    </div>
                     <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
                         Tech Skills
                     </h2>
@@ -131,16 +143,18 @@ export default function TechSkills() {
                         className="flex justify-center mb-8 md:mb-12 px-2"
 
                     >
-                        <div className="flex flex-col sm:flex-row gap-2 sm:space-x-2 sm:gap-0 p-1 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md w-full sm:w-auto">
+                        <div role="tablist" aria-label="Skill categories" className="flex flex-col sm:flex-row gap-2 sm:space-x-2 sm:gap-0 p-1 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md w-full sm:w-auto">
                             {tabs.map((tab) => {
                                 const Icon = tab.icon;
                                 return (
                                     <button
                                         key={tab.id}
                                         onClick={() => setActiveTab(tab.id)}
-                                        className={`relative flex items-center justify-center sm:justify-start space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium text-sm sm:text-base ${activeTab === tab.id
-                                            ? `bg-${tab.color}-600/20 text-${tab.color}-400 border border-${tab.color}-400/30`
-                                            : "text-white/70 hover:text-white/90 hover:bg-white/10"
+                                        role="tab"
+                                        aria-selected={activeTab === tab.id}
+                                        className={`relative flex items-center justify-center sm:justify-start space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl border font-medium text-sm sm:text-base transition-colors ${activeTab === tab.id
+                                            ? colorStyles[tab.color].tab
+                                            : "border-transparent text-white/70 hover:text-white/90 hover:bg-white/10"
                                             }`}
                                     >
                                         <Icon className="h-4 w-4" />
@@ -179,10 +193,7 @@ export default function TechSkills() {
                                             </div>
                                         </div>
                                         <div
-                                            className={`text-sm font-bold text-${skillCategories[
-                                                activeTab
-                                            ].color
-                                                }-400`}
+                                            className={`text-sm font-bold tabular-nums ${colorStyles[skillCategories[activeTab].color].text}`}
                                         >
                                             {skill.level}%
                                         </div>
@@ -192,13 +203,7 @@ export default function TechSkills() {
                                     <div className="relative">
                                         <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                                             <motion.div
-                                                className={`h-full bg-gradient-to-r from-${skillCategories[
-                                                    activeTab
-                                                ].color
-                                                    }-500 to-${skillCategories[
-                                                        activeTab
-                                                    ].color
-                                                    }-400 rounded-full`}
+                                                className={`h-full rounded-full ${colorStyles[skillCategories[activeTab].color].bar}`}
                                                 initial={{ width: 0 }}
                                                 animate={{ width: `${skill.level}%` }}
                                                 transition={{
@@ -242,13 +247,13 @@ export default function TechSkills() {
                                 </div>
                             </div>
 
-                            <div className="space-y-4">
+                            <div className="divide-y divide-white/10">
                                 {certifications.map((cert) => {
                                     const Icon = cert.icon;
                                     return (
                                         <div
                                             key={cert.code}
-                                            className="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors"
+                                            className="flex items-center justify-between gap-3 py-4 first:pt-0 last:pb-0"
                                         >
                                             <div className="flex items-center space-x-3">
                                                 {cert.status === "completed" ? (
@@ -291,7 +296,7 @@ export default function TechSkills() {
                                 </div>
                             </div>
 
-                            <div className="space-y-3">
+                            <div className="divide-y divide-white/10">
                                 {[
                                     {
                                         name: "Indoor Navigation",
@@ -311,17 +316,14 @@ export default function TechSkills() {
                                 ].map((skill, index) => (
                                     <div
                                         key={skill.name}
-                                        className="group flex items-center space-x-4 p-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300"
+                                        className="flex items-center space-x-4 py-3 first:pt-0 last:pb-0"
                                     >
                                         <div className="text-2xl">{skill.icon}</div>
                                         <div className="flex-1">
-                                            <h4 className="font-medium text-white group-hover:text-white/90 transition-colors">
+                                            <h4 className="font-medium text-white">
                                                 {skill.name}
                                             </h4>
                                             <p className="text-xs text-white/60">{skill.desc}</p>
-                                        </div>
-                                        <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <div className="h-2 w-2 rounded-full bg-indigo-400"></div>
                                         </div>
                                     </div>
                                 ))}

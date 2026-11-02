@@ -4,7 +4,7 @@ export default function sitemap() {
   return [
     {
       url: "https://www.knotzer.io",
-      lastModified: "2026-08-07",
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
